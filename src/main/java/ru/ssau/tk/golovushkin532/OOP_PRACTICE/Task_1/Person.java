@@ -28,4 +28,38 @@ public class Person {
     public int getPassportId() {
         return passportId;
     }
+
+    public Person() {
+
+    }
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Person(int passportId) {
+        this.passportId = passportId;
+    }
+
+    public Person(String firstName, String lastName, int passportId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passportId = passportId;
+    }
+
+    static class Task1 {
+        public static void main(String[] args) {
+            Person man = new Person();
+            Person dog = new Person();
+            man.setFirstName("Pastor");
+            man.setLastName("Napas");
+            man.setPassportId(74);
+            dog.setFirstName("Rocky");
+            dog.setLastName("Flaco");
+            dog.setPassportId(39);
+            System.out.println(man.getFirstName() + " " + man.getLastName() + " " + "Паспорт:" + man.getPassportId());
+            System.out.println(dog.getFirstName() + " " + dog.getLastName() + " " + "Паспорт:" + dog.getPassportId());
+        }
+    }
 }
