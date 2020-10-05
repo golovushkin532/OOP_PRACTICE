@@ -7,25 +7,32 @@ import static org.testng.Assert.*;
 public class PersonTest {
     Person secondPerson = new Person();
     Person firstPerson = new Person();
+    Person thirdPerson = new Person();
+    Person anonymousPerson = new Person();
 
 
     @Test
     public void TestFirstName() {
         secondPerson.setFirstName("Фаст");
         firstPerson.setFirstName("Тузик");
+        thirdPerson.setFirstName(null);
         assertEquals(secondPerson.getFirstName(), "Фаст");
         assertEquals(firstPerson.getFirstName(), "Тузик");
         assertNotEquals(secondPerson.getFirstName(), "Pastor");
-
+        assertNull(thirdPerson.getFirstName());
+        assertNull(anonymousPerson.getFirstName());
     }
 
     @Test
     public void TeatLastName() {
         secondPerson.setLastName("Альберто");
         firstPerson.setLastName("Собачий");
+        thirdPerson.setLastName(null);
         assertEquals(secondPerson.getLastName(), "Альберто");
         assertEquals(firstPerson.getLastName(), "Собачий");
         assertNotEquals(secondPerson.getLastName(), "Napas");
+        assertNull(thirdPerson.getLastName());
+        assertNull(anonymousPerson.getLastName());
     }
 
     @Test
