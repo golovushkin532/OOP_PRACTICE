@@ -16,6 +16,10 @@ class Point {
         return ("(" + x + ", " + y + ", " + z + ")");
     }
 
+    public double length(Point x) {
+        return Math.sqrt(x.x + x.y + x.z);
+    }
+
 
     public static void main(String[] args) {
         Point onePoint = new Point(4, 8, 1);
