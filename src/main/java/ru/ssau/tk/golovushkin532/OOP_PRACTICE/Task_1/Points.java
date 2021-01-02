@@ -56,6 +56,34 @@ public class Points extends Point {
         return new Points(ox, oy, oz);
     }
 
+    public Points opposite(Points x) {
+        double ox = -x.x;
+        double oy = -x.y;
+        double oz = -x.z;
+        return new Points(ox, oy, oz);
+    }
+
+    public Points inverse(Points x) {
+        double ox = 1 / x.x;
+        double oy = 1 / x.y;
+        double oz = 1 / x.z;
+        return new Points(ox, oy, oz);
+    }
+
+    public static double scalarProduct(Points x, Points y) {
+        double ox = x.x * y.x;
+        double oy = x.y * y.y;
+        double oz = x.z * y.z;
+        return ox + oy + oz;
+    }
+
+    public static Points vectorProduct(Points x, Points y) {
+        double ox = (x.y * y.z) - (x.z * y.y);
+        double oy = -((x.x * y.z) - (x.z * y.x));
+        double oz = (x.x * y.y) - (x.y * y.x);
+        return new Points(ox, oy, oz);
+    }
+
     public static void main(String[] args) {
         Points point1 = new Points(4, 8, 16);
         Points point2 = new Points(2, 2, 2);
