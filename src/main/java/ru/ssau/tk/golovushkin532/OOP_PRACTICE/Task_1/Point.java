@@ -11,13 +11,25 @@ class Point {
         this.z = z;
     }
 
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getZ() {
+        return z;
+    }
+
     @Override
     public String toString() {
         return ("(" + x + ", " + y + ", " + z + ")");
     }
 
-    public double length(Point x) {
-        return Math.sqrt(x.x + x.y + x.z);
+    public double length() {
+        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
     }
 
 

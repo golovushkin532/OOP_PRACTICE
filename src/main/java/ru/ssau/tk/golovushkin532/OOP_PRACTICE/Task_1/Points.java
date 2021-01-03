@@ -1,102 +1,58 @@
 package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_1;
 
+public class Points {
+    public static double DELTA = 0.00005;
 
-public class Points extends Point {
-    public Points(double x, double y, double z) {
-        super(x, y, z);
+    private Points() {
     }
 
-    public static Points sum(Points x, Points y) {
-        double ox = x.x + y.x;
-        double oy = x.y + y.y;
-        double oz = x.z + y.z;
-        return new Points(ox, oy, oz);
+    public static Point sum(Point a, Point b) {
+        return new Point(a.getX() + b.getX(), a.getY() + b.getY(), a.getZ() + b.getZ());
     }
 
-    public static Points subtract(Points x, Points y) {
-        double ox = x.x - y.x;
-        double oy = x.y - y.y;
-        double oz = x.z - y.z;
-        return new Points(ox, oy, oz);
+    public static Point subtract(Point a, Point b) {
+        return new Point(a.getX() - b.getX(), a.getY() - b.getY(), a.getZ() - b.getZ());
     }
 
-    public static Points multiply(Points x, Points y) {
-        double ox = x.x * y.x;
-        double oy = x.y * y.y;
-        double oz = x.z * y.z;
-        return new Points(ox, oy, oz);
+    public static Point multiply(Point a, Point b) {
+        return new Point(a.getX() * b.getX(), a.getY() * b.getY(), a.getZ() * b.getZ());
     }
 
-    public static Points divide(Points x, Points y) {
-        double ox = x.x / y.x;
-        double oy = x.y / y.y;
-        double oz = x.z / y.z;
-        return new Points(ox, oy, oz);
+    public static Point devide(Point a, Point b) {
+        return new Point(a.getX() / b.getX(), a.getY() / b.getY(), a.getZ() / b.getZ());
     }
 
-    public static void printPoint(Points x) {
-        System.out.print("OX=");
-        System.out.println(x.x);
-        System.out.print("OY=");
-        System.out.println(x.y);
-        System.out.print("OZ=");
-        System.out.println(x.z);
+    public static Point enlarge(Point a, double alfa) {
+        return new Point(a.getX() * alfa, a.getY() * alfa, a.getZ() * alfa);
     }
 
-
-    @Override
-    public double length(Point x) {
-        return x.length(x);
+    public static double length(Point a) {
+        return a.length();
     }
 
-    public Points enlarge(Points x, double y) {
-        double ox = x.x * y;
-        double oy = x.y * y;
-        double oz = x.z * y;
-        return new Points(ox, oy, oz);
+    public static Point opposite(Point a) {
+        return new Point(-a.getX(), -a.getY(), -a.getZ());
     }
 
-    public Points opposite(Points x) {
-        double ox = -x.x;
-        double oy = -x.y;
-        double oz = -x.z;
-        return new Points(ox, oy, oz);
+    public static Point inverse(Point a) {
+        return new Point(1 / a.getX(), 1 / a.getY(), 1 / a.getZ());
     }
 
-    public Points inverse(Points x) {
-        double ox = 1 / x.x;
-        double oy = 1 / x.y;
-        double oz = 1 / x.z;
-        return new Points(ox, oy, oz);
+    public static double scalarProduct(Point a, Point b) {
+        return a.getX() * b.getX() + a.getY() * b.getY() + a.getZ() * b.getZ();
     }
 
-    public static double scalarProduct(Points x, Points y) {
-        double ox = x.x * y.x;
-        double oy = x.y * y.y;
-        double oz = x.z * y.z;
-        return ox + oy + oz;
+    public static Point vectorProduct(Point a, Point b) {
+        return new Point(a.getY() * b.getZ() - a.getZ() * b.getY(), a.getZ() * b.getX() - a.getX() * b.getZ(), a.getX() * b.getY() - a.getY() * b.getX());
     }
 
-    public static Points vectorProduct(Points x, Points y) {
-        double ox = (x.y * y.z) - (x.z * y.y);
-        double oy = -((x.x * y.z) - (x.z * y.x));
-        double oz = (x.x * y.y) - (x.y * y.x);
-        return new Points(ox, oy, oz);
+    private static boolean equalsApproximately(double a, double b) {
+        return Math.abs(a - b) < DELTA;
     }
 
-    public static void main(String[] args) {
-        Points point1 = new Points(4, 8, 16);
-        Points point2 = new Points(2, 2, 2);
-        Points pointSum = sum(point1, point2);
-        Points pointSubtract = subtract(point1, point2);
-        Points pointMultiply = multiply(point1, point2);
-        Points pointDivide = divide(point1, point2);
-        Points pointEnlarge = point1.enlarge(point1, 4.);
-        printPoint(pointSum);
-        printPoint(pointSubtract);
-        printPoint(pointMultiply);
-        printPoint(pointDivide);
-        printPoint(pointEnlarge);
+    public static boolean equalsApproximately(Point a, Point b) {
+        return equalsApproximately(a.getX(), b.getX()) && equalsApproximately(a.getY(), b.getY()) && equalsApproximately(a.getZ(), b.getZ());
     }
+
 }
 
