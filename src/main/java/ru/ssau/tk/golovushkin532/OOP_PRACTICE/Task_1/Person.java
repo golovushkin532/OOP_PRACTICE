@@ -4,6 +4,16 @@ public class Person {
     private String firstName;
     private String lastName;
     private int passportId;
+    Gender gender;
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -31,6 +41,13 @@ public class Person {
 
     public Person() {
 
+    }
+
+    public Person(String firstName, String lastname, int passportId, Gender gender) {
+        this.firstName = firstName;
+        this.lastName = lastname;
+        this.passportId = passportId;
+        this.gender = gender;
     }
 
     public Person(String firstName, String lastName) {

@@ -10,7 +10,6 @@ public class PersonTest {
     Person thirdPerson = new Person();
     Person anonymousPerson = new Person();
 
-
     @Test
     public void TestFirstName() {
         secondPerson.setFirstName("Фаст");
@@ -43,6 +42,15 @@ public class PersonTest {
         assertEquals(firstPerson.getPassportId(), 322);
         assertNotEquals(secondPerson.getPassportId(), 911);
     }
-
+    @Test
+    public void testGender(){
+        firstPerson.setGender(Gender.FEMALE);
+        secondPerson.setGender(Gender.MALE);
+        thirdPerson.setGender(Gender.MALE);
+        assertEquals(firstPerson.getGender(), Gender.FEMALE);
+        assertEquals(secondPerson.getGender(), Gender.MALE);
+        assertEquals(thirdPerson.getGender(), Gender.MALE);
+        assertNull(anonymousPerson.getFirstName());
+    }
 
 }
