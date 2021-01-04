@@ -1,6 +1,6 @@
 package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_1;
 
-public class NamedPoint extends Point {
+public class NamedPoint extends Point implements Resettable {
     private String name;
 
     public NamedPoint(double x, double y, double z) {
@@ -22,5 +22,10 @@ public class NamedPoint extends Point {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public void reset() {
+        this.name = "Absent";
     }
 }

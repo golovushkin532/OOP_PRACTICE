@@ -5,9 +5,10 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class NamedPointTest {
-    NamedPoint jesusPoint = new NamedPoint(3.,3.,3., "Jesus");
-    NamedPoint point = new NamedPoint(1,2,3);
-    NamedPoint devilPoint = new NamedPoint(666.,666.,666.,"Devil");
+    NamedPoint jesusPoint = new NamedPoint(3., 3., 3., "Jesus");
+    NamedPoint point = new NamedPoint(1, 2, 3);
+    NamedPoint devilPoint = new NamedPoint(666., 666., 666., "Devil");
+
     @Test
     public void testGetName() {
         assertEquals(jesusPoint.getName(), "Jesus");
@@ -23,5 +24,11 @@ public class NamedPointTest {
         assertEquals(point.getName(), "RIPDOOM");
         assertEquals(devilPoint.getName(), "Snake");
         assertEquals(jesusPoint.getName(), "Son of God");
+    }
+
+    @Test
+    public void testReset() {
+        point.reset();
+        assertEquals(point.getName(), "Absent");
     }
 }
