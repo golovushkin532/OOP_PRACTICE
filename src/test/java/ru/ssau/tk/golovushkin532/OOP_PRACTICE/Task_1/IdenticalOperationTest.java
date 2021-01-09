@@ -8,15 +8,6 @@ public class IdenticalOperationTest {
 
     IdenticalOperation identical = new IdenticalOperation();
     private final static double DELTA = 0.0001;
-    private final static double POSITIVE_INFINITY;
-    private final static double NEGATIVE_INFINITY;
-    private final static double ZERO;
-
-    static {
-        POSITIVE_INFINITY = 1.0 / 0.0;
-        NEGATIVE_INFINITY = -1.0 / 0.0;
-        ZERO = 0.0;
-    }
 
     @Test
     public void testApply() {
@@ -26,15 +17,16 @@ public class IdenticalOperationTest {
         assertEquals(identical.apply(16.), 16., DELTA);
         assertEquals(identical.apply(23.), 23., DELTA);
         assertEquals(identical.apply(42.), 42., DELTA);
-        assertEquals(identical.apply(POSITIVE_INFINITY), POSITIVE_INFINITY, DELTA);
-        assertEquals(identical.apply(NEGATIVE_INFINITY), NEGATIVE_INFINITY, DELTA);
-        assertEquals(identical.apply(ZERO / ZERO), ZERO / ZERO, DELTA);
+        assertEquals(identical.apply(Double.POSITIVE_INFINITY), Double.POSITIVE_INFINITY, DELTA);
+        assertEquals(identical.apply(Double.NEGATIVE_INFINITY), Double.NEGATIVE_INFINITY, DELTA);
+        assertEquals(identical.apply(Double.NaN), Double.NaN, DELTA);
     }
+
     @Test
-    public void  testApplyTriple () {
+    public void testApplyTriple() {
         assertEquals(identical.applyTriple(74.), 74., DELTA);
-        assertEquals(identical.apply(POSITIVE_INFINITY), POSITIVE_INFINITY, DELTA);
-        assertEquals(identical.apply(NEGATIVE_INFINITY), NEGATIVE_INFINITY, DELTA);
-        assertEquals(identical.apply(ZERO / ZERO), ZERO / ZERO, DELTA);
+        assertEquals(identical.apply(Double.POSITIVE_INFINITY), Double.POSITIVE_INFINITY, DELTA);
+        assertEquals(identical.apply(Double.NEGATIVE_INFINITY), Double.NEGATIVE_INFINITY, DELTA);
+        assertEquals(identical.apply(Double.NaN), Double.NaN, DELTA);
     }
 }
