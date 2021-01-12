@@ -39,6 +39,11 @@ public class Person {
         return passportId;
     }
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+
     public Person() {
 
     }

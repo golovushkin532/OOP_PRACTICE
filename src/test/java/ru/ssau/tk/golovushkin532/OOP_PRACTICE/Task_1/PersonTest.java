@@ -53,4 +53,11 @@ public class PersonTest {
         assertNull(anonymousPerson.getFirstName());
     }
 
+    @Test
+    public void testToString() {
+        Person person = new Person("Мачу", "Пикчу");
+        assertEquals(thirdPerson.toString(), "null null");
+        assertEquals(person.toString(), "Мачу Пикчу");
+    }
+
 }

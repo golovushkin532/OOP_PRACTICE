@@ -1,6 +1,6 @@
 package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_1;
 
-class Point {
+public class Point {
     public final double x;
     public final double y;
     public final double z;
@@ -25,7 +25,7 @@ class Point {
 
     @Override
     public String toString() {
-        return ("(" + x + ", " + y + ", " + z + ")");
+        return "[" + x + "," + y + "," + z + "]";
     }
 
     public double length() {

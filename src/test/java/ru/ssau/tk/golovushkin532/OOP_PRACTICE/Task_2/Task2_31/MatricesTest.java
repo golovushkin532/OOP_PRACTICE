@@ -1,0 +1,61 @@
+package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_2.Task2_31;
+
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.*;
+
+public class MatricesTest {
+
+    @Test
+    public void testMultiplyNumber() {
+        Matrix matrix = new Matrix(2, 2);
+        matrix.setAt(0, 0, 1);
+        matrix.setAt(0, 1, 1);
+        matrix.setAt(1, 1, 1);
+        matrix.setAt(1, 0, 1);
+        Matrices.multiplyNumber(matrix, 2);
+        assertEquals(matrix.getAt(0, 0), 1);
+        assertEquals(Matrices.multiplyNumber(matrix, 2).getAt(0, 0), matrix.getAt(0, 0) * 2);
+    }
+
+    @Test
+    public void testMatrixPlus() {
+        Matrix matrix1 = new Matrix(2, 2);
+        matrix1.setAt(0, 0, 1);
+        matrix1.setAt(0, 1, 1);
+        matrix1.setAt(1, 1, 1);
+        matrix1.setAt(1, 0, 1);
+        Matrix matrix2 = new Matrix(2, 2);
+        matrix2.setAt(0, 0, 1);
+        matrix2.setAt(0, 1, 1);
+        matrix2.setAt(1, 1, 1);
+        matrix2.setAt(1, 0, 1);
+        assertEquals(Matrices.matrixPlus(matrix1, matrix2).getAt(0, 0), matrix1.getAt(0, 0) + matrix2.getAt(0, 0));
+    }
+
+    @Test
+    public void testChekDifferentMatrixSize() {
+        Matrix matrix1 = new Matrix(2, 2);
+        Matrix matrix2 = new Matrix(3, 3);
+        assertTrue(Matrices.chekDifferentMatrixSize(matrix1, matrix2));
+    }
+
+    @Test
+    public void testMatrixMultiply() {
+        Matrix matrix1 = new Matrix(2, 2);
+        matrix1.setAt(0, 0, 1);
+        matrix1.setAt(0, 1, 1);
+        matrix1.setAt(1, 1, 1);
+        matrix1.setAt(1, 0, 1);
+        Matrix matrix2 = new Matrix(2, 2);
+        matrix2.setAt(0, 0, 2);
+        matrix2.setAt(0, 1, 2);
+        matrix2.setAt(1, 1, 2);
+        matrix2.setAt(1, 0, 2);
+        Matrix result = Matrices.matrixMultiply(matrix1, matrix2);
+        assertEquals(result.getAt(0, 0), 2);
+        assertEquals(result.getAt(0, 1), 2);
+        assertEquals(result.getAt(1, 0), 2);
+        assertEquals(result.getAt(1, 1), 2);
+    }
+}
