@@ -42,8 +42,9 @@ public class PersonTest {
         assertEquals(firstPerson.getPassportId(), 322);
         assertNotEquals(secondPerson.getPassportId(), 911);
     }
+
     @Test
-    public void testGender(){
+    public void testGender() {
         firstPerson.setGender(Gender.FEMALE);
         secondPerson.setGender(Gender.MALE);
         thirdPerson.setGender(Gender.MALE);
@@ -58,6 +59,15 @@ public class PersonTest {
         Person person = new Person("Мачу", "Пикчу");
         assertEquals(thirdPerson.toString(), "null null");
         assertEquals(person.toString(), "Мачу Пикчу");
+    }
+
+    @Test
+    public void testException() {
+        Person person = new Person("Мачу", "Пикчу");
+        assertEquals(thirdPerson.exceptionPerson(thirdPerson), "null null");
+        assertEquals(person.exceptionPerson(person), "Мачу Пикчу");
+
+        assertThrows(NullPointerException.class, () -> person.exceptionPerson(null));
     }
 
 }

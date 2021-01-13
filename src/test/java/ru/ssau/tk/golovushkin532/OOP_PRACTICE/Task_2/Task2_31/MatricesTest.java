@@ -1,6 +1,7 @@
 package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_2.Task2_31;
 
 import org.testng.annotations.Test;
+import ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_4.IncompatibleDimensionsException;
 
 import static org.testng.Assert.*;
 
@@ -30,6 +31,15 @@ public class MatricesTest {
         matrix2.setAt(0, 1, 1);
         matrix2.setAt(1, 1, 1);
         matrix2.setAt(1, 0, 1);
+        Matrix matrix3 = new Matrix(2, 1);
+        matrix3.setAt(0, 0, 1);
+        matrix3.setAt(1, 0, 1);
+        try {
+            Matrices.matrixPlus(matrix1, matrix3);
+            Matrices.matrixPlus(matrix3, matrix1);
+        } catch (IncompatibleDimensionsException e) {
+            System.out.println("Словил маслину\n" + matrix1.getN() + ", " + matrix1.getM() + "\n" + "2)" + matrix2.getN() + ", " + matrix2.getM());
+        }
         assertEquals(Matrices.matrixPlus(matrix1, matrix2).getAt(0, 0), matrix1.getAt(0, 0) + matrix2.getAt(0, 0));
     }
 
@@ -52,6 +62,15 @@ public class MatricesTest {
         matrix2.setAt(0, 1, 2);
         matrix2.setAt(1, 1, 2);
         matrix2.setAt(1, 0, 2);
+        Matrix matrix3 = new Matrix(1, 2);
+        matrix3.setAt(0, 0, 1);
+        matrix3.setAt(0, 1, 1);
+        try {
+            Matrices.matrixMultiply(matrix1, matrix3);
+            Matrices.matrixMultiply(matrix3, matrix1);
+        } catch (IncompatibleDimensionsException e) {
+            System.out.println("Словил маслину");
+        }
         Matrix result = Matrices.matrixMultiply(matrix1, matrix2);
         assertEquals(result.getAt(0, 0), 2);
         assertEquals(result.getAt(0, 1), 2);

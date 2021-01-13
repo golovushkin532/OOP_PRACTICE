@@ -1,6 +1,8 @@
 package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_1;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable{
     private String firstName;
     private String lastName;
     private int passportId;
@@ -69,6 +71,11 @@ public class Person {
         this.lastName = lastName;
         this.passportId = passportId;
     }
+
+    public String exceptionPerson(Person person) {
+        return person.toString();
+    }
+
 
     static class Task1 {
         public static void main(String[] args) {

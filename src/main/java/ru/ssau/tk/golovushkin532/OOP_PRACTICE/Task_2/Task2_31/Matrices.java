@@ -1,5 +1,7 @@
 package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_2.Task2_31;
 
+import ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_4.IncompatibleDimensionsException;
+
 public class Matrices {
     static Matrix multiplyNumber(Matrix matrix, int number) {
         Matrix resultMatrix = new Matrix(matrix.getN(), matrix.getM());
@@ -13,9 +15,13 @@ public class Matrices {
 
     static Matrix matrixPlus(Matrix matrix1, Matrix matrix2) {
         Matrix resultMatrix = new Matrix(matrix1.getN(), matrix1.getM());
-        for (int i = 0; i < matrix1.getN(); i++) {
-            for (int j = 0; j < matrix1.getM(); j++)
-                resultMatrix.setAt(i, j, matrix1.getAt(i, j) + matrix2.getAt(i, j));
+        if (chekDifferentMatrixSize(matrix1, matrix2)) {
+            throw new IncompatibleDimensionsException();
+        } else {
+            for (int i = 0; i < matrix1.getN(); i++) {
+                for (int j = 0; j < matrix1.getM(); j++)
+                    resultMatrix.setAt(i, j, matrix1.getAt(i, j) + matrix2.getAt(i, j));
+            }
         }
 
         return resultMatrix;
@@ -28,15 +34,17 @@ public class Matrices {
 
     static Matrix matrixMultiply(Matrix matrix1, Matrix matrix2) {
         Matrix resultMatrix = new Matrix(matrix1.getN(), matrix1.getM());
-
-        for (int i = 0; i < matrix1.getN(); i++) {
-            for (int j = 0; j < matrix1.getN(); j++) {
-                for (int k = 0; k < matrix1.getN(); k++) {
-                    resultMatrix.setAt(i, j, matrix1.getAt(i, k) * matrix2.getAt(k, j));
+        if (chekDifferentMatrixSize(matrix1, matrix2)) {
+            throw new IncompatibleDimensionsException("Матрицы не совместимы: \n1)" + matrix1.getN() + ", " + matrix1.getM() + "\n2)" + matrix2.getN() + ", " + matrix2.getM());
+        } else {
+            for (int i = 0; i < matrix1.getN(); i++) {
+                for (int j = 0; j < matrix1.getN(); j++) {
+                    for (int k = 0; k < matrix1.getN(); k++) {
+                        resultMatrix.setAt(i, j, matrix1.getAt(i, k) * matrix2.getAt(k, j));
+                    }
                 }
             }
         }
-
         return resultMatrix;
     }
 }
