@@ -1,5 +1,7 @@
 package ru.ssau.tk.golovushkin532.OOP_PRACTICE.Task_5;
 
+import java.util.Objects;
+
 public class Location {
     private int id;
     private String name;
@@ -47,5 +49,21 @@ public class Location {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        } else if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Location location = (Location) object;
+        return id == location.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
