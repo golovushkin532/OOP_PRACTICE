@@ -19,4 +19,9 @@ public class Waypoint extends Location {
     public void setType(WaypointType type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Waypoint. Type: " + type + "; name: " + getName() + "; latitude: " + getLatitude() + "; longitude: " + getLongitude();
+    }
 }
